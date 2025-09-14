@@ -1,0 +1,25 @@
+{
+  "runoffCoefficients": {
+    "RCC": 0.85,
+    "GI": 0.90,
+    "Asbestos": 0.80,
+    "Tiles": 0.75
+  },
+  "infiltrationRates": {
+    "Sandy": 100,
+    "Loamy": 25,
+    "Clayey": 5
+  },
+  "costFactors": {
+    "baseCostPerSqm": 400,
+    "budgetMultipliers": {
+      "Low": 0.65,
+      "Medium": 1.0,
+      "High": 1.6
+    }
+  },
+  "waterRates": {
+    "municipalRate": 0.025,
+    "domesticConsumption": 135
+  }
+}

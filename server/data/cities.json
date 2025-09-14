@@ -1,0 +1,152 @@
+[
+  {
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "pincode": "400001",
+    "monthlyRainfall": [3, 2, 13, 10, 18, 507, 840, 540, 264, 64, 13, 3],
+    "annualRainfall": 2276,
+    "groundwaterDepth": 8.5,
+    "aquiferType": "Coastal",
+    "region": "West"
+  },
+  {
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "pincode": "600001",
+    "monthlyRainfall": [24, 8, 15, 28, 42, 85, 120, 115, 68, 320, 280, 140],
+    "annualRainfall": 1245,
+    "groundwaterDepth": 12.3,
+    "aquiferType": "Coastal",
+    "region": "South"
+  },
+  {
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "pincode": "560001",
+    "monthlyRainfall": [6, 9, 20, 42, 113, 101, 96, 122, 194, 180, 60, 18],
+    "annualRainfall": 961,
+    "groundwaterDepth": 45.2,
+    "aquiferType": "Hard Rock",
+    "region": "South"
+  },
+  {
+    "city": "Delhi",
+    "state": "Delhi",
+    "pincode": "110001",
+    "monthlyRainfall": [15, 18, 13, 6, 23, 65, 211, 173, 117, 10, 2, 7],
+    "annualRainfall": 660,
+    "groundwaterDepth": 25.8,
+    "aquiferType": "Alluvial",
+    "region": "North"
+  },
+  {
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "pincode": "700001",
+    "monthlyRainfall": [10, 23, 30, 43, 140, 297, 325, 328, 254, 114, 10, 5],
+    "annualRainfall": 1579,
+    "groundwaterDepth": 18.5,
+    "aquiferType": "Alluvial",
+    "region": "East"
+  },
+  {
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "pincode": "500001",
+    "monthlyRainfall": [5, 13, 13, 21, 30, 109, 164, 144, 165, 66, 16, 3],
+    "annualRainfall": 749,
+    "groundwaterDepth": 35.7,
+    "aquiferType": "Hard Rock",
+    "region": "South"
+  },
+  {
+    "city": "Pune",
+    "state": "Maharashtra",
+    "pincode": "411001",
+    "monthlyRainfall": [2, 5, 8, 25, 45, 164, 197, 122, 99, 47, 21, 5],
+    "annualRainfall": 740,
+    "groundwaterDepth": 28.4,
+    "aquiferType": "Hard Rock",
+    "region": "West"
+  },
+  {
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "pincode": "380001",
+    "monthlyRainfall": [1, 1, 2, 5, 18, 83, 211, 151, 90, 15, 3, 1],
+    "annualRainfall": 581,
+    "groundwaterDepth": 42.1,
+    "aquiferType": "Alluvial",
+    "region": "West"
+  },
+  {
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "pincode": "302001",
+    "monthlyRainfall": [8, 7, 5, 4, 18, 50, 200, 160, 70, 12, 2, 2],
+    "annualRainfall": 538,
+    "groundwaterDepth": 65.3,
+    "aquiferType": "Desert",
+    "region": "West"
+  },
+  {
+    "city": "Lucknow",
+    "state": "Uttar Pradesh",
+    "pincode": "226001",
+    "monthlyRainfall": [18, 15, 8, 5, 15, 110, 296, 277, 155, 22, 4, 8],
+    "annualRainfall": 933,
+    "groundwaterDepth": 15.2,
+    "aquiferType": "Alluvial",
+    "region": "North"
+  },
+  {
+    "city": "Chandigarh",
+    "state": "Chandigarh",
+    "pincode": "160001",
+    "monthlyRainfall": [42, 48, 55, 25, 35, 74, 165, 151, 87, 15, 4, 12],
+    "annualRainfall": 713,
+    "groundwaterDepth": 18.7,
+    "aquiferType": "Alluvial",
+    "region": "North"
+  },
+  {
+    "city": "Kochi",
+    "state": "Kerala",
+    "pincode": "682001",
+    "monthlyRainfall": [17, 40, 85, 120, 331, 647, 594, 391, 257, 293, 156, 49],
+    "annualRainfall": 2980,
+    "groundwaterDepth": 6.8,
+    "aquiferType": "Coastal",
+    "region": "South"
+  },
+  {
+    "city": "Bhubaneswar",
+    "state": "Odisha",
+    "pincode": "751001",
+    "monthlyRainfall": [15, 35, 40, 25, 65, 185, 345, 335, 240, 125, 25, 8],
+    "annualRainfall": 1443,
+    "groundwaterDepth": 22.4,
+    "aquiferType": "Hard Rock",
+    "region": "East"
+  },
+  {
+    "city": "Guwahati",
+    "state": "Assam",
+    "pincode": "781001",
+    "monthlyRainfall": [22, 35, 85, 165, 295, 465, 385, 315, 245, 95, 18, 8],
+    "annualRainfall": 2133,
+    "groundwaterDepth": 8.9,
+    "aquiferType": "Alluvial",
+    "region": "Northeast"
+  },
+  {
+    "city": "Indore",
+    "state": "Madhya Pradesh",
+    "pincode": "452001",
+    "monthlyRainfall": [12, 8, 3, 5, 15, 145, 265, 235, 125, 28, 8, 3],
+    "annualRainfall": 852,
+    "groundwaterDepth": 38.6,
+    "aquiferType": "Hard Rock",
+    "region": "Central"
+  }
+]

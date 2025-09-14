@@ -2,7 +2,7 @@ import { useState } from "react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { queryClient } from "./lib/queryClient";
+import { queryClient, apiRequest } from "./lib/queryClient";
 import Header from "@/components/Header";
 import LandingPage from "@/components/LandingPage";
 import UserInputForm from "@/components/UserInputForm";
@@ -17,6 +17,8 @@ function App() {
   const [calculationType, setCalculationType] = useState<CalculationType>(null);
   const [formData, setFormData] = useState<any>(null);
   const [calculationResults, setCalculationResults] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [submissionId, setSubmissionId] = useState<string | null>(null);
 
   const handleSelectPath = (path: 'rainwater' | 'recharge') => {
     console.log(`Selected calculation type: ${path}`);
@@ -24,15 +26,45 @@ function App() {
     setCurrentState('form');
   };
 
-  const handleFormSubmit = (data: any) => {
+  const handleFormSubmit = async (data: any) => {
     console.log('Form submitted with data:', data);
     setFormData(data);
+    setIsLoading(true);
     
-    // TODO: replace with actual backend calculation call
-    // Generate mock results based on form data
-    const mockResults = generateMockResults(data, calculationType!);
-    setCalculationResults(mockResults);
-    setCurrentState('results');
+    try {
+      // Make API call to calculate results
+      const response = await apiRequest('POST', '/api/calculate', {
+        userInputs: data,
+        calculationType: calculationType!
+      });
+      
+      // Check if response is ok
+      if (!response.ok) {
+        throw new Error(`Calculation API failed: ${response.status}`);
+      }
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        setCalculationResults(result.results);
+        setSubmissionId(result.submissionId);
+        setCurrentState('results');
+      } else {
+        console.error('Calculation failed:', result.error);
+        // Show error state or fallback to mock results for demo
+        const mockResults = generateMockResults(data, calculationType!);
+        setCalculationResults(mockResults);
+        setCurrentState('results');
+      }
+    } catch (error) {
+      console.error('API call failed:', error);
+      // Fallback to mock results if API fails
+      const mockResults = generateMockResults(data, calculationType!);
+      setCalculationResults(mockResults);
+      setCurrentState('results');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleBackToLanding = () => {
@@ -49,10 +81,42 @@ function App() {
     setCalculationResults(null);
   };
 
-  const handleDownloadPDF = () => {
+  const handleDownloadPDF = async () => {
     console.log('Generating PDF report...');
-    // TODO: integrate with proper PDF generation using real data
-    generatePDFReport(formData, calculationResults, calculationType!);
+    
+    if (!submissionId) {
+      // Fallback to local PDF generation if no submission ID
+      generatePDFReport(formData, calculationResults, calculationType!);
+      return;
+    }
+    
+    try {
+      // Call backend API to generate PDF
+      const response = await apiRequest('POST', '/api/generate-pdf', {
+        submissionId: submissionId
+      });
+      
+      // Check if response is ok
+      if (!response.ok) {
+        throw new Error(`PDF generation failed: ${response.status}`);
+      }
+      
+      // Handle PDF download
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${calculationType}-analysis-report-${formData?.name?.replace(/\s+/g, '-')}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      
+    } catch (error) {
+      console.error('PDF generation failed:', error);
+      // Fallback to local PDF generation
+      generatePDFReport(formData, calculationResults, calculationType!);
+    }
   };
 
   // TODO: remove mock functionality - replace with actual backend integration

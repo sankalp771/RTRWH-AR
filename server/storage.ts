@@ -1,37 +1,42 @@
-import { type User, type InsertUser } from "@shared/schema";
+import { type UserSubmission, type InsertUserSubmission, type UserInput, type CalculationResults } from "@shared/schema";
 import { randomUUID } from "crypto";
 
-// modify the interface with any CRUD methods
-// you might need
-
+// Storage interface for rainwater harvesting calculations
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  saveSubmission(userInputs: UserInput, calculationType: 'rainwater' | 'recharge', results: CalculationResults): Promise<UserSubmission>;
+  getSubmission(id: string): Promise<UserSubmission | undefined>;
+  getRecentSubmissions(limit?: number): Promise<UserSubmission[]>;
 }
 
 export class MemStorage implements IStorage {
-  private users: Map<string, User>;
+  private submissions: Map<string, UserSubmission>;
 
   constructor() {
-    this.users = new Map();
+    this.submissions = new Map();
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
-  }
-
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
+  async saveSubmission(userInputs: UserInput, calculationType: 'rainwater' | 'recharge', results: CalculationResults): Promise<UserSubmission> {
     const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+    const submission: UserSubmission = {
+      id,
+      userInputs,
+      calculationType,
+      results,
+      createdAt: new Date()
+    };
+    this.submissions.set(id, submission);
+    return submission;
+  }
+
+  async getSubmission(id: string): Promise<UserSubmission | undefined> {
+    return this.submissions.get(id);
+  }
+
+  async getRecentSubmissions(limit = 10): Promise<UserSubmission[]> {
+    const submissions = Array.from(this.submissions.values())
+      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+      .slice(0, limit);
+    return submissions;
   }
 }
 
