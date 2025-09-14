@@ -1,0 +1,66 @@
+Build a full-stack web application called "RTRWH/AR – Rainwater Harvesting & Artificial Recharge Assistant" with the following specifications:
+
+Tech Stack:
+- Frontend: React.js + TailwindCSS
+- Backend: Node.js + Express
+- Database: MongoDB (for optional user inputs/history)
+- PDF generation: any library (jsPDF or pdfkit)
+- Optional: Lottie/SVG for animations
+
+Features:
+
+1️⃣ Landing Page:
+- Two cards/buttons: "Rainwater Harvesting" or "Artificial Recharge"
+- Route user to the respective input form
+
+2️⃣ User Input Form:
+- Name & Location (manual pin code/city or GPS fetch)
+- Roof Details: Area (m²), Roof Type (dropdown: RCC, GI, Asbestos, Tiles)
+- Surrounding Environment: Residential, Industrial, Agricultural, Bird Nesting (radio/checkbox)
+- Number of Dwellers, Purpose (Domestic, Irrigation, Industrial)
+- Open Space Availability (Yes/No + optional area)
+- Depth to Groundwater (manual or from static dataset)
+- Soil Type: Sandy, Loamy, Clayey
+- Budget Preference: Low, Medium, High
+- Validations & user-friendly dropdowns
+
+3️⃣ Backend Calculations (Node.js/Express):
+- Rainwater Harvesting Potential (RHP) = rainfall × roof area × runoff coefficient
+- Monthly RHP (if monthly rainfall data exists)
+- Household Demand = people × 135 × 365
+- Coverage % = RHP / Demand × 100
+- First Flush = roof area × 2 mm rainfall
+- Storage Tank Sizing: N days demand or % of RHP
+- Groundwater Recharge: pit/trench/shaft geometry, porosity-based volume
+- Feasibility Checks: roof type, soil, groundwater depth, contamination risk
+- Cost Estimation: Low / Medium / High
+- Annual Savings & Payback Period
+- Sensitivity Analysis: ±10% runoff coefficient, 5% system loss
+- Return JSON with all computed fields for frontend
+
+4️⃣ Data Integration:
+- Rainfall data (JSON/CSV per Indian city)
+- Groundwater depth & aquifer type (JSON/CSV from CGWB)
+- Roof type → runoff coefficient map
+- Soil infiltration rates map
+
+5️⃣ Frontend Display:
+- Info Cards: RHP, Tank/Recharge dimensions, Costs, Annual savings, Payback
+- Feasibility Note & Recommendation Note
+- Infographic / Simple Animations
+- Optional: Language toggle (English/Hindi), PDF report download
+
+6️⃣ Optional Extra:
+- User history storage in MongoDB
+- Dynamic charts/graphs for payback, savings, coverage
+
+Requirements:
+- All backend logic must be in a separate controller/module
+- Frontend should call backend API and render JSON results dynamically
+- Include a clean folder structure for frontend and backend
+- Write reusable React components for input fields and result cards
+- Include example data for testing
+- Generate a fully functional boilerplate project ready to run
+
+Output:
+- Full project skeleton with frontend, backend, utils, static data, and example code for all calculations
