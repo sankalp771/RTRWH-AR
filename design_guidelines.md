@@ -1,4 +1,4 @@
-# RTRWH/AR Rainwater Harvesting Assistant - Design Guidelines
+# RTRWH/AR Rainwater Harvesting Assistant - Design 
 
 ## Design Approach
 **Reference-Based Approach** inspired by environmental and utility applications like Tesla Solar, Nest, and government environmental portals. This application requires trust, professionalism, and clear data presentation while maintaining environmental awareness.
